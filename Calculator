@@ -1,0 +1,103 @@
+from tkinter import *
+import turtle
+
+
+root = Tk()
+root.geometry("900x900")
+equa = ''
+def turtl():
+    emad = turtle.Turtle()
+    for i in range(10):
+        emad.forward(100)
+        emad.right(100)
+        emad.forward(100)
+
+
+
+def calculator():
+    root.configure(background = 'yellow')
+    root.geometry("433x584")
+    root.resizable(0,0)
+    equation = StringVar()
+    calculation = Entry(root, textvariable = equation, bd =20, bg = "powder blue", width = 26, justify = 'center', font = 'none 20 bold')
+    equation.set('')
+    calculation.grid(columnspan = 4)
+
+    def BtnPress(num):
+        global equa
+        equa = equa + str(num)
+        equation.set(equa)
+    def eww():
+        global equa
+        total = str(eval(equa))
+        equation.set(total)
+        equa = ''
+    def clear():
+        global equa
+        equation.set('')
+        equa = ''
+
+    button1 = Button(root, text = '1', command = lambda : BtnPress(1), font = 'none 30 bold', width = 4, height = 2)
+    button1.grid(row = 1, column = 0)
+    button2 = Button(root, text='2', command=lambda: BtnPress(2), font='none 30 bold' , width = 4, height = 2)
+    button2.grid(row=1, column=1)
+    button3 = Button(root, text='3', command=lambda: BtnPress(3), font='none 30 bold' , width = 4, height = 2)
+    button3.grid(row=1, column=2)
+    button4 = Button(root, text='4', command=lambda: BtnPress(4), font='none 30 bold' , width = 4, height = 2)
+    button4.grid(row=2, column=0)
+    button5 = Button(root, text='5', command=lambda: BtnPress(5), font='none 30 bold' , width = 4, height = 2)
+    button5.grid(row=2, column=1)
+    button6 = Button(root, text='6', command=lambda: BtnPress(6), font='none 30 bold' , width = 4, height = 2)
+    button6.grid(row=2, column=2)
+    button7 = Button(root, text='7', command=lambda: BtnPress(7), font='none 30 bold' , width = 4, height = 2)
+    button7.grid(row=3, column=0)
+    button8 = Button(root, text='8', command=lambda: BtnPress(8), font='none 30 bold' , width = 4, height = 2)
+    button8.grid(row=3, column=1)
+    button9 = Button(root, text='9', command=lambda: BtnPress(9), font='none 30 bold' , width = 4, height = 2)
+    button9.grid(row=3, column=2)
+    button0 = Button(root, text='0', command=lambda: BtnPress(0), font='none 30 bold' , width = 4, height = 2)
+    button0.grid(row=4, column=1)
+    plus = Button(root, text='+', command=lambda: BtnPress('+'), font='none 30 bold' , width = 4, height = 2)
+    plus.grid(row=1, column=3)
+    minus = Button(root, text='-', command=lambda: BtnPress('-'), font='none 30 bold', width=4, height=2)
+    minus.grid(row=2, column=3)
+    multi = Button(root, text='*', command=lambda: BtnPress('*'), font='none 30 bold' , width = 4, height = 2)
+    multi.grid(row=3, column=3)
+
+
+    divide = Button(root, text='/', command=lambda: BtnPress('/'), font='none 30 bold' , width = 4, height = 2)
+    divide.grid(row=4, column=3)
+    equal = Button(root, text = '=', command = eww, font='none 30 bold' , width = 4, height = 2 )
+    equal.grid(row = 4, column= 2)
+    clear = Button(root, text = 'C', command = clear,font='none 30 bold' , width = 4, height = 2)
+    clear.grid(row = 4, column = 0)
+
+
+menu = Menu(root)
+
+
+
+m1 = Menu(menu, tearoff = 0, bg = "aqua")
+m1.add_command(label = "New Project", command = lambda : print("Hello world"))
+m1.add_command(label = "New", command = lambda : print("Hello world"))
+m1.add_command(label = "Calculator", command = calculator)
+m1.add_command(label = "Open Turtle", command = turtl)
+
+
+
+
+
+
+menu.add_cascade(label = "File", menu = m1, background = 'aqua')
+
+root.configure(menu = menu, background = 'Black')
+
+
+
+
+
+
+
+
+
+root.mainloop()
