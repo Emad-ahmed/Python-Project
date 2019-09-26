@@ -1,0 +1,238 @@
+from tkinter   import *
+import  random
+import time
+
+
+root = Tk()
+root.title("My Restaurant Gui")
+root.geometry("1600x1600+0+0")
+
+
+topFrame  = Frame(root, bg ="powder blue", width = 1600, height = 50, relief = SUNKEN)
+topFrame.pack(side = TOP)
+LeftFrame= Frame(root,  width = 800, height = 800, relief = SUNKEN)
+LeftFrame.pack(side = LEFT)
+rightFrame = Frame(root, width = 300, height = 800,  relief = SUNKEN)
+rightFrame.pack(side = RIGHT)
+
+
+
+############Label######
+localtime = time.asctime(time.localtime(time.time()))
+
+label1 = Label(topFrame, text = "Emad Restaurant Management System", fg = 'steel blue', font = 'arial 40 bold', bd = 20, anchor = 'w')
+label1.grid(row  = 0, column = 0)
+label2 = Label(topFrame, text =  localtime, bd=30, anchor ='w', font = 'arial 30 bold' ,fg = 'steel blue')
+label2.grid(row = 1, column = 0)
+
+################################################## End ########
+
+
+######calculaator########################
+equa = ''
+equation = StringVar()
+calculation = Entry(rightFrame, textvariable = equation, bd = 10, insertwidth= 4, bg = 'powder blue', font ='arial 18 bold', justify = 'right' )
+equation.set('')
+calculation.grid(columnspan = 4)
+
+########################## End First in Calcultor##############################
+
+def BtnPress(num):
+    global equa
+    equa = equa + str(num)
+    equation.set(equa)
+def equal():
+    global equa
+    total = str(eval(equa))
+    equation.set(total)
+    equa = ''
+def clear():
+    global equa
+    equation.set('')
+    equa = ''
+
+def Ref():
+
+
+    CoI = float(Icecream.get())
+    CoS = float(Somosa.get())
+    CoC = float(Chicken.get())
+    CoCa = float(Cake.get())
+    CoB = float(Burger.get())
+    CoD = float(Drinks.get())
+
+
+    CostofIcecream = CoI * 30
+    CostofSomosa = CoS * 10
+    CostofChicken = CoC * 300
+    CostofCake = CoCa * 100
+    CostofBurger = CoB * 90
+    CostofDrinks = CoD * 100
+
+
+    CostofMeal = 'Taka', str('%.2f' % (CostofIcecream + CostofSomosa + CostofChicken + CostofCake + CostofCake + CostofBurger + CostofDrinks))
+
+    Paytax = ((CostofIcecream + CostofSomosa + CostofChicken + CostofCake + CostofCake + CostofBurger + CostofDrinks) * 0.02)
+
+    TotalCost = (CostofIcecream + CostofSomosa + CostofChicken + CostofCake + CostofCake + CostofBurger + CostofDrinks)
+
+    Ser_Charge = ((CostofIcecream + CostofSomosa + CostofChicken + CostofCake + CostofCake + CostofBurger + CostofDrinks) / 99)
+
+    Servic = "Taka", str('%.2f' % Ser_Charge)
+
+    OverallCost = "Taka", str('%.2f' % (Paytax + TotalCost + Ser_Charge))
+
+
+    paidtax = 'Taka', str('%.2f' % Paytax)
+
+    Cost.set(CostofMeal)
+    Tax.set(paidtax)
+    Service.set(Servic)
+    SubTotal.set(CostofMeal)
+    Total.set(OverallCost)
+
+
+
+
+def Reset():
+    rand.set('')
+    Somosa.set('')
+    Icecream.set('')
+    Cake.set('')
+    Burger.set('')
+    Chicken.set('')
+    Drinks.set('')
+    Service.set('')
+    Tax.set('')
+    Cost.set('')
+    SubTotal.set('')
+    Total.set('')
+
+def Exit():
+    root.destroy()
+
+
+
+###############################################Start Button###################################################
+
+
+Button1 = Button(rightFrame, text = '1', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(1))
+Button1.grid(row = 2, column = 0)
+Button2 = Button(rightFrame, text = '2', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(2))
+Button2.grid(row = 2, column = 1)
+Button3 = Button(rightFrame, text = '3', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(3))
+Button3.grid(row = 2, column = 2)
+Button4 = Button(rightFrame, text = '4', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(4))
+Button4.grid(row = 3, column = 0)
+Button5 = Button(rightFrame, text = '5', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(5))
+Button5.grid(row = 3, column = 1)
+Button6 = Button(rightFrame, text = '6', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(6))
+Button6.grid(row = 3, column = 2)
+Button7 = Button(rightFrame, text = '7', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(7))
+Button7.grid(row = 4, column = 0)
+Button8 = Button(rightFrame, text = '8', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(8))
+Button8.grid(row = 4, column = 1)
+Button9 = Button(rightFrame, text = '9', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(9))
+Button9.grid(row = 4, column = 2)
+Button0 = Button(rightFrame, text = '0', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress(0))
+Button0.grid(row = 5, column = 1)
+plus = Button(rightFrame, text = '+', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress('+'))
+plus.grid(row = 2, column = 3)
+minus = Button(rightFrame, text = '-', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress('-'))
+minus.grid(row = 3, column = 3)
+mul = Button(rightFrame, text = '*', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress('*'))
+mul.grid(row = 4, column = 3)
+divide = Button(rightFrame, text = '/', padx = 16, pady = 16, bd = 8,bg = 'powder blue', font = 'arial 16 bold', command =  lambda : BtnPress('/'))
+divide.grid(row = 5, column = 3)
+equal = Button(rightFrame, text = '=', padx = 16, pady=16, font = 'arial 16 bold', bd = 8, bg= 'powder blue', command = equal)
+equal.grid(row = 5, column = 2)
+clear = Button(rightFrame, text = '=', padx = 16, pady=16, font = 'arial 16 bold', bd = 8, bg= 'powder blue', command = clear)
+clear.grid(row = 5, column = 0)
+###########################################End Button####################################################################################
+
+########################### Start Infoo################################
+
+rand = StringVar()
+Somosa = StringVar()
+Icecream = StringVar()
+Cake = StringVar()
+Burger = StringVar()
+Chicken = StringVar()
+Drinks = StringVar()
+Service = StringVar()
+Tax = StringVar()
+Cost = StringVar()
+SubTotal = StringVar()
+Total = StringVar()
+
+lblCustomerName = Label(LeftFrame, text = 'Customer Name', bd = 16, font = ('arial', 16, 'bold'), anchor = 'w' )
+lblCustomerName.grid(row = 0, column = 0)
+txtCustomerName = Entry(LeftFrame, font ='arial 16 bold',bg = 'powder blue', bd = 10, textvariable = rand, insertwidth = 4, justify = 'center')
+txtCustomerName.grid(row = 0, column = 1)
+
+
+lblSomosa = Label(LeftFrame, text = 'Somosa', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblSomosa.grid(row = 1, column = 0)
+txtSomosa = Entry(LeftFrame, textvariable = Somosa, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtSomosa.grid(row = 1, column = 1)
+
+lblIcecream = Label(LeftFrame, text = 'Ice Cream', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblIcecream.grid(row = 2, column = 0)
+txtIcecream = Entry(LeftFrame, textvariable = Icecream, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtIcecream.grid(row = 2, column = 1)
+
+lblCake = Label(LeftFrame, text = 'Cake', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblCake.grid(row = 3, column = 0)
+txtCake = Entry(LeftFrame, textvariable = Cake, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtCake.grid(row = 3, column = 1)
+
+lblBurger= Label(LeftFrame, text = 'Burger', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblBurger.grid(row = 4, column = 0)
+txtBurger = Entry(LeftFrame, textvariable = Burger, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtBurger.grid(row = 4, column = 1)
+
+lblChicken= Label(LeftFrame, text = 'Chicken', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblChicken.grid(row = 5, column = 0)
+txtChicken = Entry(LeftFrame, textvariable = Chicken, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtChicken.grid(row = 5, column = 1)
+
+####################################### Lbl Info 2 ############################################################################################
+lblBurger= Label(LeftFrame, text = 'Drinks', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblBurger.grid(row = 0, column = 2)
+txtDrinks = Entry(LeftFrame, textvariable = Drinks, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtDrinks.grid(row = 0, column = 3)
+
+lblService = Label(LeftFrame, text = 'Service Tax', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblService.grid(row = 1, column = 2)
+txtService = Entry(LeftFrame, textvariable = Service, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtService.grid(row = 1, column = 3)
+
+lblTax = Label(LeftFrame, text = 'Tax', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblTax.grid(row = 2, column = 2)
+txtTax = Entry(LeftFrame, textvariable = Tax, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtTax.grid(row = 2, column = 3)
+
+lblCost = Label(LeftFrame, text = 'Cost', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblCost.grid(row = 3, column = 2)
+txtCost = Entry(LeftFrame, textvariable = Cost, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtCost.grid(row = 3, column = 3)
+
+lblSubtotal = Label(LeftFrame, text = 'Sub Total', font = 'arial 16 bold', fg='black', bd = 16, anchor = 'w')
+lblSubtotal.grid(row = 4, column = 2)
+txtSubtotal = Entry(LeftFrame, textvariable = SubTotal, font = 'arial 16 bold', bd = 10, insertwidth = 4, bg ='powder blue', justify = 'right')
+txtSubtotal.grid(row = 4, column = 3)
+
+lblTotalCost= Label(LeftFrame, text = 'TotalCost', bd = 16, font = ('arial', 16, 'bold'), anchor = 'w' )
+lblTotalCost.grid(row = 5, column = 2)
+txtTotalCost = Entry(LeftFrame, font ='arial 16 bold', bd = 10,bg = 'powder blue', textvariable = Total, insertwidth = 4, justify = 'right')
+txtTotalCost.grid(row = 5, column = 3)
+#################################################################  END  #######################################################################
+
+################################### BUTTON ######################################################
+btnTotal = Button(LeftFrame, fg = 'black', bd = 16,padx = 16, pady = 16, font = 'arial 16 bold', width = 10, text = 'Total', bg = 'powder blue', command = Ref).grid(row = 7, column = 1)
+btnReset = Button(LeftFrame, fg = 'black', bd = 16,padx = 16, pady = 16, font = 'arial 16 bold', width = 10, text = 'Reset', bg = 'powder blue', command = Reset).grid(row = 7, column = 2)
+btnExit = Button(LeftFrame, fg = 'black', bd = 16,padx = 16, pady = 16, font = 'arial 16 bold', width = 10, text = 'Exit', bg = 'powder blue', command = Exit).grid(row = 7, column = 3)
+######################################### END ###################################################
+
+
+root.mainloop()
