@@ -1,0 +1,50 @@
+from tkinter import*
+
+
+window = Tk()
+window.title("Dictionary")
+window.geometry("600x500")
+window.resizable(0,0)
+window.configure(background = "black")
+
+
+def click():
+    entered_text = Text_entry.get()
+    output.delete(0.0, END)
+    try:
+        definition = dic[entered_text]
+    except:
+        definition = "There Is No Word Like That"
+    output.insert(END, definition)
+
+def close_window():
+    window.destroy()
+    exit()
+
+    
+
+Label(window, text = "Enter Word: ", font = 'none 12 bold', bg = "black", fg = "white").grid(row = 0, column = 0, sticky = W)
+Text_entry =Entry(window, width = 30, font = "none 13 bold")
+Text_entry.grid(row = 1, column = 0, sticky = W)
+Button(window, text = "submit", command = click, font = "none 12 bold").grid(row =2, column = 0, sticky = W)
+
+
+Label(window, text = "Enter Defintion: ", font = 'none 12 bold', bg = "black", fg = "white").grid(row = 3, column = 0, sticky = W)
+
+output = Text(window, wrap = WORD, width = 60, background = "white", height = 10, fg = 'red')
+output.grid(row = 4, column = 0, columnspan = 2, sticky = W) 
+
+dic = {
+
+    'cat' : 'বিড়াল',
+    'mango' : 'আম',
+    'dog' : 'কুকুর\n\nNote:কুকুর একটি পোষা প্রাণী ',
+    }
+
+Label(window, text = "Click To Exit", font = 'none 12 bold',bg = "black",fg = "white").grid(row = 5, column = 0, sticky = W)
+
+Button(window, text = "Exit", command = close_window, font = "none 12 bold").grid(row =6, column = 0, sticky = W)
+
+
+
+window.mainloop()
