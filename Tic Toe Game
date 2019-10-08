@@ -1,0 +1,72 @@
+from tkinter import*
+
+root = Tk()
+
+root.resizable(0,0)
+root.title("Tic Toe Game")
+
+c = 1
+def show(b):
+    global c
+    c = c+1
+    if(c%2==0):
+        if(b["text"] == ""):
+            b["text"] = "0"
+    else:
+        if(b["text"] == ""):
+            b["text"] = "X"
+    
+
+
+b1 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b1), width = 10, height = 4)
+b1.bind("<Button>", lambda e:b1.configure(background="hot pink"))
+b1.grid(row=0, column = 0)
+
+b2 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b2), width = 10, height = 4)
+b2.bind("<Button>", lambda e:b2.configure(background="hot pink"))
+
+b2.grid(row=0, column = 1)
+
+b3 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b3), width = 10, height = 4)
+b3.bind("<Button>", lambda e:b3.configure(background="hot pink"))
+
+b3.grid(row=0, column = 2)
+
+b4 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b4), width = 10, height = 4)
+b4.bind("<Button>", lambda e:b4.configure(background="hot pink"))
+
+b4.grid(row=1, column = 0)
+
+b5 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b5), width = 10, height = 4)
+b5.bind("<Button>", lambda e:b5.configure(background="hot pink"))
+
+b5.grid(row=1, column = 1)
+
+b6 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b6), width = 10, height = 4)
+b6.bind("<Button>", lambda e:b6.configure(background="hot pink"))
+
+b6.grid(row=1, column = 2)
+
+b7 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b7), width = 10, height = 4)
+b7.bind("<Button>", lambda e:b7.configure(background="hot pink"))
+
+b7.grid(row=2, column = 0)
+
+b8 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b8), width = 10, height = 4)
+b8.bind("<Button>", lambda e:b8.configure(background="hot pink"))
+
+b8.grid(row=2, column = 1)
+
+b9 = Button(root, text = "", font = "none 15 italic", command = lambda : show(b9), width = 10, height = 4)
+b9.bind("<Button>", lambda e:b9.configure(background="hot pink"))
+
+b9.grid(row=2, column = 2)
+
+
+
+
+
+
+
+
+root.mainloop()
