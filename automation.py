@@ -46,7 +46,7 @@ searchbtn.pack()
   
 # # Styling the label widget so that clock 
 # # will look more attractive 
-lbl = Label(topframe, text="Masud Search Engine", font = ('calibri', 90, 'bold'), 
+lbl = Label(topframe, text="Emad Search Engine", font = ('calibri', 90, 'bold'), 
            
             foreground = '#A054D4',  bg="#C1B2AF") 
   
